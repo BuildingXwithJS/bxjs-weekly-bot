@@ -9,6 +9,12 @@ bus.on('message', text => {
   client.channels.get(bxjsWeeklyChannelId).send(text);
 });
 
+// catch errors so that discord client doesn't crash
+// see: https://github.com/BuildingXwithJS/bxjs-weekly-bot/issues/1
+client.on('error', error => {
+  console.error('Discord error:', error);
+});
+
 module.exports = () =>
   new Promise(resolve => {
     client.on('ready', () => {
