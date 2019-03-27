@@ -1,0 +1,11 @@
+{
+  "name": "bxjs-weekly-bot",
+  "restart": "no",
+  "env": {
+    "BOT_TOKEN": "@bxjs_tg_token",
+    "DISCORD_BOT_TOKEN": "@bxjs_disc_token"
+  },
+  "volumes": [
+    "bxjsdb:/usr/src/app/db"
+  ]
+}
