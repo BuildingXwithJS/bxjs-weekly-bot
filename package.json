@@ -19,6 +19,7 @@
   "homepage": "https://github.com/BuildingXwithJS/bxjs-weekly-bot#readme",
   "dependencies": {
     "discord.js": "^11.4.2",
+    "lowdb": "^1.0.0",
     "telegraf": "^3.27.1"
   }
 }
