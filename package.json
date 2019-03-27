@@ -1,0 +1,24 @@
+{
+  "name": "bxjs-weekly-bot",
+  "version": "0.1.0",
+  "description": "BxJS Weekly helper bot",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BuildingXwithJS/bxjs-weekly-bot.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/BuildingXwithJS/bxjs-weekly-bot/issues"
+  },
+  "homepage": "https://github.com/BuildingXwithJS/bxjs-weekly-bot#readme",
+  "dependencies": {
+    "discord.js": "^11.4.2",
+    "telegraf": "^3.27.1"
+  }
+}
