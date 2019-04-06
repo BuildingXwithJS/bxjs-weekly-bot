@@ -11,9 +11,7 @@ bus.on('message', text => {
 
 // catch errors so that discord client doesn't crash
 // see: https://github.com/BuildingXwithJS/bxjs-weekly-bot/issues/1
-client.on('error', error => {
-  console.error('Discord error:', error);
-});
+client.on('error', () => {});
 
 module.exports = () =>
   new Promise(resolve => {
