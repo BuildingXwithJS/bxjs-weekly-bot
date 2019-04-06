@@ -30,6 +30,11 @@ bot.command('clear', async ctx => {
   ctx.reply('Done. Database cleared.');
 });
 
+bot.command('count', async ctx => {
+  const posts = await getPosts();
+  ctx.reply(`I currently have ${posts.length} posts saved.`);
+});
+
 module.exports = () => {
   bot.launch();
   console.log('Telegram bot started');
