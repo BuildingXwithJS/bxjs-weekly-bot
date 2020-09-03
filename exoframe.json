@@ -1,6 +1,7 @@
 {
   "name": "bxjs-weekly-bot",
   "restart": "no",
+  "domain": false,
   "env": {
     "BOT_TOKEN": "@bxjs_tg_token",
     "DISCORD_BOT_TOKEN": "@bxjs_disc_token"
