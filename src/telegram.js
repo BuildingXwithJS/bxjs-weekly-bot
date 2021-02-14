@@ -1,18 +1,27 @@
-const Telegraf = require('telegraf');
+const { Telegraf } = require('telegraf');
 const bus = require('./messagebus');
-const {getPosts, clearDb} = require('./storage');
+const { getPosts, clearDb } = require('./storage');
 
 const owner = 'yamalight';
+const bxjsChannelId = -1001202370482;
+const bxjsChannelTitle = 'BxJS Weekly';
 const MAX_MESSAGE_LENGTH = 4096;
 
 const bot = new Telegraf(process.env.BOT_TOKEN);
 
-bot.on('channel_post', ctx => {
-  const {text} = ctx.update.channel_post;
-  bus.emit('message', text);
+bot.on('channel_post', (ctx) => {
+  const {
+    text,
+    sender_chat: { id, title },
+  } = ctx.update.channel_post;
+
+  // only emit message if it comes from official BxJS channel
+  if (id === bxjsChannelId && title === bxjsChannelTitle) {
+    bus.emit('message', text);
+  }
 });
 
-bot.command('dump', async ctx => {
+bot.command('dump', async (ctx) => {
   const posts = await getPosts();
   if (!posts.length) {
     ctx.reply('No saved messages yet!');
@@ -20,7 +29,7 @@ bot.command('dump', async ctx => {
   }
 
   // filter out empty and broken posts
-  const filteredPosts = posts.filter(p => p && p.length > 0);
+  const filteredPosts = posts.filter((p) => p && p.length > 0);
 
   let message = '';
   // contact posts into new messages in chunks
@@ -38,8 +47,8 @@ bot.command('dump', async ctx => {
   }
 });
 
-bot.command('clear', async ctx => {
-  const {from} = ctx.update.message;
+bot.command('clear', async (ctx) => {
+  const { from } = ctx.update.message;
   if (from.username !== owner) {
     ctx.reply('Sorry! Only Tim is allowed to do that :)');
     return;
@@ -48,7 +57,7 @@ bot.command('clear', async ctx => {
   ctx.reply('Done. Database cleared.');
 });
 
-bot.command('count', async ctx => {
+bot.command('count', async (ctx) => {
   const posts = await getPosts();
   ctx.reply(`I currently have ${posts.length} posts saved.`);
 });

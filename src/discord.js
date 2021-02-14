@@ -5,8 +5,9 @@ const client = new Discord.Client();
 
 const bxjsWeeklyChannelId = '560410743032250384';
 
-bus.on('message', text => {
-  client.channels.get(bxjsWeeklyChannelId).send(text);
+bus.on('message', async (text) => {
+  const channel = await client.channels.fetch(bxjsWeeklyChannelId);
+  channel.send(text);
 });
 
 // catch errors so that discord client doesn't crash
@@ -14,7 +15,7 @@ bus.on('message', text => {
 client.on('error', () => {});
 
 module.exports = () =>
-  new Promise(resolve => {
+  new Promise((resolve) => {
     client.on('ready', () => {
       console.log(`Logged in as ${client.user.tag}!`);
       resolve();

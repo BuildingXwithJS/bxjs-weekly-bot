@@ -4,7 +4,8 @@
   "description": "BxJS Weekly helper bot",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "lint": "eslint ."
   },
   "repository": {
     "type": "git",
@@ -18,8 +19,18 @@
   },
   "homepage": "https://github.com/BuildingXwithJS/bxjs-weekly-bot#readme",
   "dependencies": {
-    "discord.js": "^11.4.2",
+    "discord.js": "^12.5.1",
     "lowdb": "^1.0.0",
-    "telegraf": "^3.27.1"
+    "telegraf": "^4.0.3"
+  },
+  "devDependencies": {
+    "eslint": "^7.20.0",
+    "eslint-config-prettier": "^7.2.0",
+    "eslint-config-standard": "^16.0.2",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-promise": "^4.3.1",
+    "eslint-plugin-standard": "^5.0.0"
   }
 }
